@@ -1,0 +1,62 @@
+// Special Homepage Code
+
+.front-banner {
+	$front-banner-image-height:132px;
+	$front-banner-image-width:235px;
+	$front-banner-columns:10;
+	$front-banner-width: $front-banner-image-width * $front-banner-columns;
+	overflow:hidden;
+	margin:0 auto;
+	overflow-x:hidden;
+	position:relative;
+	.call {
+		position:absolute;
+		width:100%;
+		height: $front-banner-image-height / 1.5;
+		display:table;
+		margin:0 auto;
+		text-align:center;
+		top: ($front-banner-image-height / 1.5) / 2 - 25px;
+		h2 {
+			display:table-cell;
+			vertical-align:middle;
+			font-size: emCalc(28px);
+		}
+		@media #{$small} {
+			height: $front-banner-image-height;
+			top: $front-banner-image-height / 2;
+		}
+	}
+	ul {
+		overflow:hidden;
+		margin:0;
+		height:$front-banner-image-height / 1.5;
+		width:$front-banner-width / 1.5;
+		left:-20%;
+		position:relative;
+		img {
+			width: $front-banner-image-width / 1.5;
+			height: $front-banner-image-height / 1.5;
+			filter: gray; /* IE6-9 */
+			-webkit-filter: grayscale(1);
+			opacity:0.3;
+		}
+		@media #{$small} {
+			height:$front-banner-image-height;
+			width:$front-banner-width;
+			img {
+				width: $front-banner-image-width;
+				height: $front-banner-image-height;
+			}
+		}
+		@media only screen and (min-width:1952px) {
+			left:0;
+			margin:0 auto;
+		//	right:0;
+		}
+	}
+	li {
+		list-style-type:none;
+		float:left;
+	}
+}

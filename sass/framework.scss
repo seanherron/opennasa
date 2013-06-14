@@ -1,0 +1,50 @@
+// openNASA Framework
+
+// We put some NASA specific code here
+
+// Basic Site Structure Setup
+
+.container {
+	// We'll put some margin on the top
+	margin-top: emCalc(30px);
+}
+
+
+// Misc Items
+
+
+// Icon Text
+.icon-descriptor {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+// Links
+a {
+	color:$highlight;
+	&:hover {
+		color:lighten($highlight, 20%);
+	}
+}
+
+// Tag Display
+
+.tag-list {
+	@include inline-list();
+}
+
+.tag-item {
+	a {
+		font-size: emCalc(14px);
+		color:lighten($foreground, 45%);
+		background:darken($background, 10%);
+		display:inline-block;
+		padding-left: emCalc(15px);
+		padding-right: emCalc(10px);
+	}
+}

@@ -1,0 +1,242 @@
+//
+// Basic Content Area Grid
+//
+
+div.content {
+	@include grid-row();
+	// We'll push things down a bit
+	// And a bit more when on a bigger screen
+	@media #{$small} {
+		margin-top: emCalc(50px);
+	}
+	&.uncontain {
+		margin-top: emCalc(25px);
+	}
+}
+
+
+// Article Grid Components
+
+.article-flyout {
+	@include grid-column(12);
+	@media #{$small} {
+		@include grid-column(2, false, false, false, false, 9, false, left);
+	}
+}
+
+.article-single {
+	@media #{$small} {
+		@include grid-column(9, false, false, false, 3, false, false, left);
+	}
+}
+
+.article-list-item {
+	@include grid-row();
+	padding-top: emCalc(36px);
+	padding-bottom: emCalc(36px);
+	border-top:emCalc(1px) solid lighten($foreground, 80%);
+	&:first-child {
+		border-top:0;
+	}
+	.article-image {
+		display:none;
+		.image-citation {
+			right:emCalc(17px);
+		}
+		@media #{$small} {
+			display:block;
+			@include grid-column(5);
+		}
+	}
+	.article-body {
+		@include grid-column(12);
+		@media #{$small} {
+			display:block;
+			@include grid-column(5);
+		}
+	}
+	h2 {
+		margin-top:emCalc(-1px);
+		margin-bottom:0;
+	}
+}
+// Sections
+
+.article-section {
+	padding-top: emCalc(36px);
+	padding-bottom: emCalc(36px);
+	border-top:emCalc(1px) solid lighten($foreground, 80%);
+	border-bottom:emCalc(1px) solid lighten($foreground, 80%);
+	h2 {
+		margin-top:0;
+		font-size:emCalc(22px);
+		text-align:center;
+	}
+	// We'll remove a top border if there is an article section directly before
+	& + .article-section {
+		border-top:0;
+	}
+	// And remove the bottom border on the last article section
+	&:last-child {
+		border-bottom:0;
+	}
+}
+
+//// Images
+
+.article-image {
+	position:relative;
+	width:100%;
+	font-size: emCalc(10px);
+	
+	img {
+		min-width:100%;
+	}
+	
+	.image-citation {
+		position:absolute;
+		bottom: 0;
+		right: 0;
+		text-align:right;
+		color:$background;
+		background: rgba($foreground, 0.6);
+		padding: emCalc(10px);
+		padding-bottom: emCalc(5px);
+	}
+}
+
+
+
+
+
+// Header Details
+.article-header {
+	margin-bottom: emCalc(75px);
+}
+
+.article-title {
+	@include grid-column(12);
+	.article-headline {
+		margin-bottom: emCalc(2.5px);
+	}
+	.article-additional-headline {
+		font-size: emCalc(12px);
+		color:lighten($foreground, 60%);
+		a {
+			color:inherit;
+		}
+		@media #{$small} {
+			display:none;
+		}
+	}
+}
+
+// Flyout Feature
+.article-flyout {
+	border-top: emCalc(2px) solid lighten($foreground, 80%);
+	border-bottom: emCalc(2px) solid lighten($foreground, 80%);
+	background:lighten($foreground, 82.5%);
+	padding-top: emCalc(36px);
+	padding-bottom: emCalc(36px);
+	font-size: emCalc(14px);
+	text-align:center;
+	@media #{$small} {
+		text-align:right;
+		border-top:none;
+		border-bottom:none;
+		background:none;
+		padding-top:0;
+		padding-bottom:0;
+	}
+	.flyout-header {
+		font-weight:bold;
+		font-family:$header-font-family;
+		font-size:emCalc(18px);
+	}
+	.author-image {
+		display:block;
+		margin:0 auto;
+		@media #{$small} {
+			text-align:right;
+			margin-left:0;
+			margin-right:0;
+		}
+		margin-bottom:emCalc(10px);
+		a {
+			
+		}
+		img {
+			max-width:120px;
+			-webkit-mask-image: url('/image/nasa-mask.png');
+		}
+	}
+	.author-info {
+		.author-name {
+			font-weight:bold;
+			font-family:$header-font-family;
+			display:block;
+			margin-bottom: emCalc(5px);
+			font-size: emCalc(22px);
+			a {
+				color:inherit;
+			}
+		}
+	}
+	.author-detail,.author-contact,.article-meta {
+		font-size: emCalc(14px);	
+	}
+	.author-detail {
+		font-weight:300;
+		font-style:italic;
+		@media #{$small} {
+			color:lighten($foreground, 30%);
+		}
+	}
+	.author-contact {
+		margin-top: emCalc(5px);
+		margin-bottom: emCalc(25px);
+		display:block;
+		font-weight:300;
+		font-style:italic;
+	}
+	.article-date {
+		font-weight:300;
+		font-style:italic;
+	}
+	.article-tags {
+		margin-top: emCalc(25px);
+		display:block;
+		ul {
+			display:block;
+		}
+	}
+}
+
+// Content Area
+
+.article-body {
+	@include grid-column(12);
+}
+
+// Related Articles
+.related-articles {
+	.article-list {
+		@include grid-row(nest);
+	}
+	article {
+		@include grid-column(6);
+		@media #{$small} {
+			@include grid-column(4);
+		}
+		.article-tease {
+			@include grid-column(12);
+			h3 {
+				font-size:emCalc(16px);
+				text-align:center;
+			}
+			img {
+				width:100%;
+			}
+		}
+	}
+}
